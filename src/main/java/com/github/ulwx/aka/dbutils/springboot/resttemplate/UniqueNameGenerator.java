@@ -1,0 +1,28 @@
+package com.github.ulwx.aka.dbutils.springboot.resttemplate;
+
+import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.context.annotation.AnnotationBeanNameGenerator;
+
+public class UniqueNameGenerator extends AnnotationBeanNameGenerator {
+
+    @Override
+    public String generateBeanName(BeanDefinition definition, BeanDefinitionRegistry registry) {
+
+        if (definition instanceof AnnotatedBeanDefinition) {
+            String beanName = determineBeanNameFromAnnotation((AnnotatedBeanDefinition) definition);
+            if (beanName!=null && !beanName.trim().isEmpty()) {
+                // Explicit bean name found.
+                return beanName;
+            }else{
+                //全限定类名
+                beanName = definition.getBeanClassName();
+                return beanName;
+            }
+        }
+
+        // 使用默认类名
+        return buildDefaultBeanName(definition, registry);
+    }
+}

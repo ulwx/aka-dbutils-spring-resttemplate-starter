@@ -1,0 +1,6 @@
+aka:
+  springboot:
+    rest-template:
+      connection-timeout-seconds: 10000 #单位秒
+      socket-timeout-seconds: 10000 #单位秒
+      pool-max-connections: 200  #单个url最大的连接数

@@ -1,0 +1,8 @@
+aka:
+  springboot:
+    rest-template:
+      connection-timeout-seconds: 10000 #单位秒
+      write-timeout-seconds: 10000 #单位秒
+      read-timeout-seconds: 10000 #单位秒
+      pool-max-idle-connections: 200  #单个url最大的连接数
+      pool-keep-alive-duration-seconds: 30  #秒 单个连接的有效期
